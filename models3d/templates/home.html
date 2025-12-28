@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<p class="text">ВАЖНО — Заказ можно забрать только по улице</p>
+
+{% for model in models %}
+  <button class="button">
+    <a href="{% url 'order' model.id %}" style="text-decoration: none; color: inherit;">
+      <p class="text">{{ model.name }} — {{ model.price }}₽</p>
+    </a>
+  </button>
+  <p class="text">{{ model.description|default:"—" }}</p>
+{% endfor %}
+{% endblock %}

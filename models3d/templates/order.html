@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2 class="text">{{ model.name }} — {{ model.price }}₽</h2>
+
+<form method="post">
+  {% csrf_token %}
+  <input class="message_input" name="email" type="email" placeholder="email@example.com" required>
+  <input class="message_input" name="first_name" type="text" placeholder="Имя" required>
+  <input class="message_input" name="last_name" type="text" placeholder="Фамилия" required>
+  <input class="message_input" name="pickup_date" type="text" placeholder="Когда заберёте заказ? (ДД ММ ГГГГ)" required>
+  <input class="message_input" name="color" type="text" placeholder="Какой цвет?" required>
+  <button class="button" type="submit">Оплатить</button>
+</form>
+
+<a href="{% url 'home' %}" class="button" style="background-color:#666; margin-top:10px;">← Назад</a>
+{% endblock %}
