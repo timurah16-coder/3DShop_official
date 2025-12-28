@@ -3,7 +3,8 @@ from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get('SECRET_KEY', 'dev-secret-key-for-local-use-only')
-DEBUG = os.environ.get('DEBUG', 'False') == 'True'
+DEBUG = False
+
 
 ALLOWED_HOSTS = [
     'localhost',
@@ -71,5 +72,8 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [BASE_DIR / 'models3d/static']
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 
-# Whitenoise настройки (не нужно if DEBUG — он сам работает)
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+STORAGES = {
+    "staticfiles": {
+        "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
+    },
+}
