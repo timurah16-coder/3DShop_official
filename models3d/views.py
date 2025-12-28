@@ -4,6 +4,10 @@ from django.contrib import messages
 from .models import Model3D, Order
 
 
+def home(request):
+    models = Model3D.objects.all().order_by('id')
+    return render(request, 'home.html', {'models': models})
+
 def order(request, model_id):
     model = get_object_or_404(Model3D, id=model_id)
     if request.method == 'POST':
