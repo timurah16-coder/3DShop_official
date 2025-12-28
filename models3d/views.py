@@ -34,3 +34,6 @@ def order(request, model_id):
         return redirect('success')
 
     return render(request, 'order.html', {'model': model})
+
+def success(request):
+    return render(request, 'success.html')
