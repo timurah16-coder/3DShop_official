@@ -23,7 +23,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'models3d',
-    'whitenoise.runserver_nostatic',  # ← ЭТОГО СЕЙЧАС НЕТ!
 ]
 
 MIDDLEWARE = [
@@ -86,7 +85,7 @@ STATIC_ROOT = BASE_DIR / 'staticfiles'
 # Настройка Whitenoise для раздачи статики в продакшене
 # В самом конце settings.py
 
+# Настройка WhiteNoise для продакшена
 if not DEBUG:
-    # Добавляем WhiteNoiseMiddleware сразу после SecurityMiddleware
     MIDDLEWARE.insert(1, 'whitenoise.middleware.WhiteNoiseMiddleware')
     STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
