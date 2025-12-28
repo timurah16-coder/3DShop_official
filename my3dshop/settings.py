@@ -85,7 +85,8 @@ STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 # Настройка Whitenoise для раздачи статики в продакшене
 # В самом конце settings.py
+
 if not DEBUG:
-    # Вставляем WhiteNoise сразу после SecurityMiddleware
+    # Добавляем WhiteNoiseMiddleware сразу после SecurityMiddleware
     MIDDLEWARE.insert(1, 'whitenoise.middleware.WhiteNoiseMiddleware')
     STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
