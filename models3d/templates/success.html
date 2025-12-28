@@ -21,3 +21,10 @@
 <p class="text">После оплаты я начну печатать Ваш заказ</p>
 <a href="{% url 'home' %}" class="button" style="background-color:#666; margin-top:20px;">← На главную</a>
 {% endblock %}
+
+# models3d/views.py
+
+from django.shortcuts import render
+
+def success(request):
+    return render(request, 'success.html')
