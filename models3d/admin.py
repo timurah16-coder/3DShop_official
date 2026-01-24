@@ -3,8 +3,15 @@ from .models import Model3D, Order
 
 @admin.register(Model3D)
 class Model3DAdmin(admin.ModelAdmin):
-    list_display = ['name', 'price', 'description']
-    search_fields = ['name']
+    list_display = ['name', 'price', 'image_preview']
+    readonly_fields = ['image_preview']
+
+    def image_preview(self, obj):
+        if obj.image_name:
+            return f'<img src="{obj.image_url()}" style="max-height:100px;"/>'
+        return "—"
+    image_preview.short_description = "Превью"
+    image_preview.allow_tags = True  # ← Важно! Разрешает HTML
 
 @admin.register(Order)
 class OrderAdmin(admin.ModelAdmin):

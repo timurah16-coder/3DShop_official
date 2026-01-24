@@ -1,10 +1,16 @@
 from django.db import models
 
+
 class Model3D(models.Model):
     name = models.CharField("Название", max_length=100)
     price = models.DecimalField("Цена, ₽", max_digits=10, decimal_places=2)
     description = models.TextField("Описание", blank=True)
-    image = models.ImageField("Фото", upload_to="models/", blank=True)
+    image_name = models.CharField("Имя файла изображения", max_length=100, blank=True, help_text="Например: dummy13.jpg")
+
+    def image_url(self):
+        if self.image_name:
+            return f"/static/images/{self.image_name}"
+        return ""
 
     def __str__(self):
         return f"{self.name} — {self.price}₽"
