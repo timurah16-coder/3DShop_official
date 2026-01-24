@@ -6,6 +6,8 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('models3d.urls')),
+    path('order/<int:model_id>/', views.order, name='order'),
+    path('success/', views.success, name='success'),  # ← ЭТО ДОЛЖНО БЫТЬ!
 ]
 
 if settings.DEBUG:
